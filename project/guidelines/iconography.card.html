@@ -1,0 +1,44 @@
+<!-- @dsCard group="Brand" viewport="700x150" name="Iconography — Lucide" subtitle="Stroke-weight 1.5, 20–24px, secondary color" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+html,body{margin:0}
+body{background:var(--bg-base);padding:24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.ic{width:48px;height:48px;border-radius:12px;background:var(--surface-card);border:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;color:var(--text-secondary)}
+.ic.acc{color:var(--accent);background:var(--accent-soft);border-color:var(--border-accent)}
+.ic.vfy{color:var(--verify)}
+svg{width:20px;height:20px;stroke-width:1.5}
+</style></head>
+<body>
+<div class="ic acc"><svg><use href="#briefcase"/></svg></div>
+<div class="ic acc"><svg><use href="#filter"/></svg></div>
+<div class="ic"><svg><use href="#video"/></svg></div>
+<div class="ic"><svg><use href="#user"/></svg></div>
+<div class="ic"><svg><use href="#star"/></svg></div>
+<div class="ic vfy"><svg><use href="#badge-check"/></svg></div>
+<div class="ic"><svg><use href="#sliders-horizontal"/></svg></div>
+<div class="ic"><svg><use href="#x"/></svg></div>
+<div class="ic"><svg><use href="#chevron-down"/></svg></div>
+<div class="ic"><svg><use href="#arrow-left"/></svg></div>
+<div class="ic"><svg><use href="#upload"/></svg></div>
+<div class="ic"><svg><use href="#link"/></svg></div>
+<script>
+  document.addEventListener('DOMContentLoaded',()=>lucide.createIcons());
+  // Fallback: render Lucide icons manually
+  const icons = {
+    briefcase:'briefcase',filter:'filter',video:'video',user:'user',star:'star',
+    'badge-check':'badge-check','sliders-horizontal':'sliders-horizontal',
+    x:'x','chevron-down':'chevron-down','arrow-left':'arrow-left',upload:'upload',link:'link'
+  };
+  document.querySelectorAll('svg use').forEach(u=>{
+    const id=u.getAttribute('href').replace('#','');
+    const ic=lucide[id.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())];
+    if(!ic)return;
+    const svg=u.closest('svg');
+    svg.removeChild(u);
+    svg.innerHTML=ic[2].map(([tag,attrs])=>`<${tag} ${Object.entries(attrs||{}).map(([k,v])=>`${k}="${v}"`).join(' ')}/>`).join('');
+    svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.5');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');
+  });
+</script>
+</body></html>

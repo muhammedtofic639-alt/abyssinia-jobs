@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Forms & Inputs" subtitle="Text fields, file upload, role gate, checkbox, switch" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  html,body{margin:0}
+  body{background:var(--bg-base);font-family:var(--font-body);padding:22px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+  const { Input, FileUpload, RoleCard, Checkbox, Switch } = window.AbyssiniaJobsDesignSystem_633419;
+  function Demo(){
+    const [role,setRole]=React.useState('SEEKER');
+    const [on,setOn]=React.useState(true);
+    const [view,setView]=React.useState(true);
+    return (
+      <div className="grid">
+        <div style={{display:'flex',flexDirection:'column',gap:14}}>
+          <Input label="Full name" placeholder="e.g. Selam Tesfaye" />
+          <Input label="Video pitch link" placeholder="YouTube / TikTok URL" />
+          <FileUpload label="Commercial license" hint="PDF or photo" />
+          <FileUpload label="Owner ID" fileName="owner-id.jpg" />
+        </div>
+        <div style={{display:'flex',flexDirection:'column',gap:14}}>
+          <RoleCard title="Looking for work" description="Build a video profile" icon="◎" selected={role==='SEEKER'} onSelect={()=>setRole('SEEKER')} />
+          <RoleCard title="I'm hiring" description="Browse verified talent" icon="▣" selected={role==='EMPLOYER'} onSelect={()=>setRole('EMPLOYER')} />
+          <div style={{padding:'4px 8px',background:'var(--surface-card)',borderRadius:'var(--radius-md)'}}>
+            <Checkbox label="Video Editor" count={42} checked={on} onChange={setOn} />
+            <Checkbox label="Cinematographer" count={18} checked={false} onChange={()=>{}} />
+          </div>
+          <Switch checked={view} onChange={setView} label="Employer view" />
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

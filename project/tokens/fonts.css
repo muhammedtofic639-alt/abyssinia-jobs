@@ -1,0 +1,9 @@
+/* ── Abyssinia Jobs · Webfonts ──────────────────────────────────────────
+   SUBSTITUTION NOTE: No brand font files were supplied. These are the
+   nearest premium Google Fonts matches for a dark, neon, product-grade UI:
+     • Space Grotesk — display / headings (techy geometric grotesque)
+     • Manrope       — body / UI text   (clean, friendly, high legibility)
+     • Space Mono    — numerals / data  (ratings, stats, metadata)
+   Replace with licensed brand binaries when available. */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');

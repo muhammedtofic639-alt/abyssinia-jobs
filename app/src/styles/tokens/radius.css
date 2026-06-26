@@ -1,0 +1,13 @@
+/* ── Abyssinia Jobs · Radius ────────────────────────────────────────────
+   Generous, soft corners. Cards are rounded-2xl/3xl; pills are fully
+   round; the only sharp edge is the screen itself. */
+
+:root {
+  --radius-xs:   8px;    /* chips, small inputs */
+  --radius-sm:   12px;   /* inputs, tags */
+  --radius-md:   16px;   /* buttons, list rows */
+  --radius-lg:   22px;   /* cards (rounded-2xl) */
+  --radius-xl:   28px;   /* hero / swipe cards (rounded-3xl) */
+  --radius-2xl:  36px;   /* full-screen sheets top corners */
+  --radius-pill: 999px;  /* buttons, badges, avatars */
+}

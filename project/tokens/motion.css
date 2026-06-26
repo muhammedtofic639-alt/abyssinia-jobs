@@ -1,0 +1,15 @@
+/* ── Abyssinia Jobs · Motion ────────────────────────────────────────────
+   Motion is fluid and confident — never bouncy-cute. Cards swipe with
+   momentum; sheets glide up; accordions ease open. Snappy in, gentle out. */
+
+:root {
+  --dur-fast:   140ms; /* @kind other */
+  --dur-base:   240ms; /* @kind other */
+  --dur-slow:   360ms; /* @kind other */
+  --dur-swipe:  280ms; /* @kind other */
+
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);  /* @kind other */
+  --ease-in:       cubic-bezier(0.5, 0, 0.75, 0);  /* @kind other */
+  --ease-spring:   cubic-bezier(0.34, 1.4, 0.5, 1); /* @kind other */
+}

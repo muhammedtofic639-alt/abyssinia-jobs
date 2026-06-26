@@ -1,0 +1,15 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Status & Verification" subtitle="Pending · Approved · Rejected · Verify blue" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<style>
+html,body{margin:0}
+body{background:var(--bg-base);font-family:var(--font-mono);padding:20px;display:flex;gap:12px}
+.sw{flex:1;height:108px;border-radius:14px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;box-sizing:border-box}
+.n{font-size:11px;font-weight:700;color:#000}.h{font-size:10px;color:#000;opacity:.7}
+</style></head>
+<body>
+<div class="sw" style="background:var(--status-pending)"><span class="n">pending</span><span class="h">#FFC53D</span></div>
+<div class="sw" style="background:var(--status-approved)"><span class="n">approved</span><span class="h">#41E08B</span></div>
+<div class="sw" style="background:var(--status-rejected)"><span class="n">rejected</span><span class="h">#FF5A5A</span></div>
+<div class="sw" style="background:var(--verify);box-shadow:0 0 16px var(--verify-glow)"><span class="n" style="color:#fff">verify</span><span class="h" style="color:#fff">#2EA8FF</span></div>
+</body></html>

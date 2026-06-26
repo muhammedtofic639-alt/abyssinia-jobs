@@ -1,0 +1,26 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo & Lockup" subtitle="Official geometric mark — white on black" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<style>
+html,body{margin:0}
+body{background:var(--bg-base);padding:28px;font-family:var(--font-display);display:flex;gap:48px;align-items:center}
+.mark{width:100px;height:100px;border-radius:20px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mark img{width:80%;height:80%;object-fit:contain}
+.lime-mark{width:100px;height:100px;border-radius:20px;overflow:hidden;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 10px 30px var(--accent-glow)}
+.lime-mark img{width:80%;height:80%;object-fit:contain;filter:invert(1)}
+.lock{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;align-items:center;gap:14px}
+.wm{color:var(--text-primary);font-weight:700;font-size:26px;letter-spacing:-1px}
+.tag{color:var(--text-tertiary);font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+</style></head>
+<body>
+<div class="mark"><img src="../assets/logo.jpeg" alt="Abyssinia Jobs logo mark"/></div>
+<div class="lime-mark"><img src="../assets/logo.jpeg" alt="Abyssinia Jobs logo mark on lime"/></div>
+<div class="lock">
+  <div class="row">
+    <div style="width:38px;height:38px;border-radius:10px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0"><img src="../assets/logo.jpeg" style="width:80%;height:80%;object-fit:contain" alt=""/></div>
+    <span class="wm">abyssinia <span style="color:var(--text-secondary)">jobs</span></span>
+  </div>
+  <span class="tag">Get discovered · Video-first hiring</span>
+</div>
+</body></html>

@@ -1,0 +1,113 @@
+// Abyssinia Jobs — database schema
+// See chats/chat1.md for the original product brief this implements.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// SQLite has no native enum support in Prisma, so Role and VerificationStatus
+// are stored as strings and constrained by the `Role` / `VerificationStatus`
+// TypeScript union types exported from src/lib/types.ts.
+model User {
+  id                 String   @id @default(cuid())
+  email              String   @unique
+  passwordHash       String
+  role               String // "SEEKER" | "EMPLOYER"
+  verificationStatus String   @default("PENDING") // "PENDING" | "APPROVED" | "REJECTED"
+  // Lets a user flip which side of the app they're viewing without touching
+  // verification state — e.g. an approved employer browsing as a seeker.
+  activeViewMode     String? // "SEEKER" | "EMPLOYER" | null
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  seekerProfile   SeekerProfile?
+  employerProfile EmployerProfile?
+
+  // Chat: an employer initiates a match by liking a seeker; both sides then
+  // exchange messages inside that match thread.
+  employerMatches Match[]   @relation("EmployerMatches")
+  seekerMatches   Match[]   @relation("SeekerMatches")
+  sentMessages    Message[] @relation("SentMessages")
+}
+
+model SeekerProfile {
+  id            String       @id @default(cuid())
+  userId        String       @unique
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name          String
+  photoUrl      String?
+  videoPitchUrl String?
+  description   String
+  // Public verification checkmark — independent of the account's own
+  // VerificationStatus, which gates employers, not seekers.
+  isVerified    Boolean      @default(false)
+  subCategoryId String?
+  subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model EmployerProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyName       String
+  commercialLicense String
+  ownerId           String
+  // Admin-set quality score, 1–10. Null until an admin has rated them.
+  adminRating       Int?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// A conversation between one employer and one seeker. Created when the
+// employer likes the seeker in the swipe feed; unique per pair so re-liking
+// just reopens the existing thread.
+model Match {
+  id         String    @id @default(cuid())
+  employerId String
+  seekerId   String
+  employer   User      @relation("EmployerMatches", fields: [employerId], references: [id], onDelete: Cascade)
+  seeker     User      @relation("SeekerMatches", fields: [seekerId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+  messages   Message[]
+
+  @@unique([employerId, seekerId])
+  @@index([employerId])
+  @@index([seekerId])
+}
+
+model Message {
+  id        String    @id @default(cuid())
+  matchId   String
+  match     Match     @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  senderId  String
+  sender    User      @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  body      String
+  // Null until the recipient has opened the thread containing this message.
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([matchId])
+}
+
+model MainCategory {
+  id            String        @id @default(cuid())
+  name          String        @unique
+  subCategories SubCategory[]
+}
+
+model SubCategory {
+  id             String          @id @default(cuid())
+  name           String
+  mainCategoryId String
+  mainCategory   MainCategory    @relation(fields: [mainCategoryId], references: [id], onDelete: Cascade)
+  seekers        SeekerProfile[]
+
+  @@unique([mainCategoryId, name])
+}

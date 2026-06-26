@@ -1,0 +1,29 @@
+/* ── Abyssinia Jobs · Spacing ───────────────────────────────────────────
+   4px base grid. Mobile screens breathe at 20–24px edge gutters;
+   cards pad at 16–20px. Use the scale, not arbitrary values. */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;   /* default screen gutter */
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Semantic */
+  --gutter-screen: var(--space-5);
+  --pad-card:      var(--space-5);
+  --gap-stack:     var(--space-4);
+  --gap-inline:    var(--space-2);
+
+  /* Layout constants */
+  --app-max-width: 440px;     /* mobile-first canvas cap */
+  --tap-min:       44px;      /* minimum hit target */
+  --safe-bottom:   34px;      /* home-indicator safe area */
+}

@@ -1,0 +1,22 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Text & Borders" subtitle="Neutral text ramp + hairline borders on dark" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link rel="stylesheet" href="../styles.css"/>
+<style>
+html,body{margin:0}
+body{background:var(--bg-base);font-family:var(--font-body);padding:22px;display:flex;gap:28px;align-items:center}
+.txt span{display:block;margin-bottom:7px;font-weight:600}
+.bd{display:flex;gap:10px}
+.bx{width:88px;height:70px;border-radius:12px;background:var(--surface-card);display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;font-family:var(--font-mono);font-size:10px;color:var(--text-tertiary)}
+</style></head>
+<body>
+<div class="txt">
+  <span style="color:var(--text-primary);font-size:18px">Primary — #F7F7F8</span>
+  <span style="color:var(--text-secondary);font-size:15px">Secondary — #9A9AA2</span>
+  <span style="color:var(--text-tertiary);font-size:13px">Tertiary — #5A5A62</span>
+</div>
+<div class="bd">
+  <div class="bx" style="border:1px solid var(--border-subtle)">subtle .07</div>
+  <div class="bx" style="border:1px solid var(--border-default)">default .11</div>
+  <div class="bx" style="border:1px solid var(--border-strong)">strong .18</div>
+</div>
+</body></html>

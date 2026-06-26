@@ -1,0 +1,94 @@
+/* ── Abyssinia Jobs · Color System ──────────────────────────────────────
+   Ultra-dark, neon-lime, video-centric. Backgrounds are deep charcoal;
+   one electric lime accent carries every primary action and verified state;
+   a neon blue marks public profile verification. Use sparingly — the dark
+   field is the canvas, the lime is the spark. */
+
+:root {
+  /* ── Raw scales ─────────────────────────────────────────────── */
+
+  /* Ink — deep charcoal backgrounds, darkest → lightest surface */
+  --ink-900: #0B0B0C;   /* app base */
+  --ink-850: #0F0F11;
+  --ink-800: #121214;   /* raised surface */
+  --ink-750: #161619;   /* card */
+  --ink-700: #1C1C20;   /* elevated card / input */
+  --ink-600: #26262C;   /* hairline-strong / pressed */
+  --ink-500: #34343C;
+
+  /* Lime — the electric accent */
+  --lime-700: #9FC000;
+  --lime-600: #B8E000;
+  --lime-500: #D4FF00;  /* PRIMARY accent */
+  --lime-400: #E0FF4D;
+  --lime-300: #ECFF8A;
+
+  /* Verify blue — public verification checkmark */
+  --blue-600: #1488E6;
+  --blue-500: #2EA8FF;  /* verified emblem */
+  --blue-400: #5DBEFF;
+
+  /* Neutral text ramp */
+  --white: #FFFFFF;
+  --gray-50:  #F7F7F8;
+  --gray-200: #C7C7CE;
+  --gray-400: #9A9AA2;
+  --gray-500: #74747C;
+  --gray-600: #5A5A62;
+  --gray-700: #3E3E45;
+
+  /* Semantic hues */
+  --green-500: #41E08B;   /* success / approved */
+  --amber-500: #FFC53D;   /* pending */
+  --red-500:   #FF5A5A;   /* rejected / error */
+
+  /* ── Semantic aliases ───────────────────────────────────────── */
+
+  /* Backgrounds & surfaces */
+  --bg-base:      var(--ink-900);
+  --bg-raised:    var(--ink-800);
+  --surface-card: var(--ink-750);
+  --surface-elevated: var(--ink-700);
+  --surface-pressed:  var(--ink-600);
+
+  /* Translucent glass layers (over imagery / video) */
+  --glass-soft:   rgba(255, 255, 255, 0.04);
+  --glass:        rgba(255, 255, 255, 0.07);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+  --scrim:        rgba(6, 6, 7, 0.74);          /* modal / overlay backdrop */
+  --scrim-grad:   linear-gradient(to top, rgba(6,6,7,0.92) 0%, rgba(6,6,7,0.55) 38%, rgba(6,6,7,0) 78%); /* @kind color */
+
+  /* Accent */
+  --accent:        var(--lime-500);
+  --accent-hover:  var(--lime-400);
+  --accent-press:  var(--lime-600);
+  --accent-soft:   rgba(212, 255, 0, 0.12);     /* tinted fill / focus ring */
+  --accent-glow:   rgba(212, 255, 0, 0.45);
+  --on-accent:     var(--ink-900);              /* text/icon ON lime */
+
+  /* Verification */
+  --verify:        var(--blue-500);
+  --verify-glow:   rgba(46, 168, 255, 0.40);
+  --on-verify:     var(--white);
+
+  /* Text */
+  --text-primary:   var(--gray-50);
+  --text-secondary: var(--gray-400);
+  --text-tertiary:  var(--gray-600);
+  --text-on-accent: var(--ink-900);
+
+  /* Borders / hairlines */
+  --border-subtle:  rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.11);
+  --border-strong:  rgba(255, 255, 255, 0.18);
+  --border-accent:  rgba(212, 255, 0, 0.55);
+
+  /* Status (verification + feedback) */
+  --status-pending:  var(--amber-500);
+  --status-approved: var(--green-500);
+  --status-rejected: var(--red-500);
+  --success: var(--green-500);
+  --warning: var(--amber-500);
+  --danger:  var(--red-500);
+  --info:    var(--blue-500);
+}
